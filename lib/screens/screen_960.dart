@@ -1,5 +1,5 @@
-import 'dart:math';
-
+import 'package:chess_family_clock/screens/clock_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Screen960 extends StatefulWidget {
@@ -10,35 +10,91 @@ class Screen960 extends StatefulWidget {
 }
 
 class Screen960State extends State<Screen960> {
-  List<dynamic> posicion = ['A', 'C', 'C', 'A', 'T', 'D', 'T', 'R'];
-  Map<int, String> finalPosicion = {
-    0: 'A',
-    1: 'A',
-    2: 'C',
-    3: 'C',
-    4: 'T',
-    5: 'T',
-    6: 'D',
-    7: 'R',
-  };
+  final tiempo = TextEditingController();
+  final suma = TextEditingController();
 
-  String generateRandomString(int len) {
-    var r = Random();
-    const _chars = 'AACCTTDR';
-    return List.generate(len, (index) => _chars[r.nextInt(_chars.length)])
-        .join();
-  }
+  List<dynamic> posicion = ['A', 'C', 'C', 'A', 'T', 'D', 'T', 'R'];
 
   @override
   Widget build(BuildContext context) {
-    for (var i = 0; i < 8; i++) {
-      //var aleatorio = Random().n;
-      //posicion[i] = aleatorio.toString();
-    }
-
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
-        child: Text('$posicion'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  posicion.shuffle();
+                });
+              },
+              child: const Text('Cambiar'),
+            ),
+            Text('$posicion'),
+            TextButton.icon(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Fijar tiempo'),
+                    content: SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              hintText: 'Tiempo inicial',
+                            ),
+                            onChanged: (value) {
+                              tiempo.text = value;
+                            },
+                            onSaved: (value) {
+                              tiempo.text = value!;
+                            },
+                          ),
+                          TextFormField(
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              hintText: 'Incremento',
+                            ),
+                            onChanged: (value) {
+                              suma.text = value;
+                            },
+                            onSaved: (value) {
+                              suma.text = value!;
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          if (tiempo.text.isEmpty) tiempo.text = '5';
+                          if (suma.text.isEmpty) suma.text = '0';
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => ClockScreen(
+                                tiempo: int.parse(tiempo.text),
+                                incremento: int.parse(suma.text),
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Aceptar'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              icon: const Icon(Icons.done),
+              label: const Text('Jugar'),
+            ),
+          ],
+        ),
       ),
     );
   }

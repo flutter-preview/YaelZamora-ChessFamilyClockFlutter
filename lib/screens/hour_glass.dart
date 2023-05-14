@@ -36,6 +36,8 @@ class _HourGlassState extends State<HourGlass> {
               onTap: () {
                 if (jugadasNegras == 1) {
                   _controllerNegras.start();
+                  isReverseWhite = false;
+                  isReverseBlack = true;
                 }
                 jugadasBlancas++;
               },
@@ -97,6 +99,8 @@ class _HourGlassState extends State<HourGlass> {
             onTap: () {
               if (jugadasBlancas == 0) {
                 _controllerBlancas.start();
+                isReverseBlack = false;
+                isReverseWhite = true;
               }
               jugadasNegras++;
             },

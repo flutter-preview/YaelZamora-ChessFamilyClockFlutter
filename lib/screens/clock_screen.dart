@@ -1,3 +1,4 @@
+import 'package:chess_family_clock/screens/set_time_screen.dart';
 import 'package:custom_timer/custom_timer.dart';
 import 'package:flutter/material.dart';
 
@@ -109,7 +110,13 @@ class _ClockScreenState extends State<ClockScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const SetTimeScreen(),
+                      ),
+                    ),
                     icon: const Icon(
                       Icons.home,
                     ),

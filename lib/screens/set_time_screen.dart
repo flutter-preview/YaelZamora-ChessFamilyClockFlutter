@@ -49,7 +49,6 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextFormField(
-                    controller: tiempo,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       hintText: 'Tiempo inicial',
@@ -62,7 +61,6 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
                     },
                   ),
                   TextFormField(
-                    controller: suma,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       hintText: 'Incremento',
@@ -91,6 +89,7 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
                   if (tiempo.text == '') {
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   } else {
+                    if (suma.text.isEmpty) suma.text = '0';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -137,7 +136,7 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
                   ),
                   child: const Text('960'),
                 ),
-                TextButton(
+                /* TextButton(
                   onPressed: () {
                     if (tiempoInicial == 0) {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -154,7 +153,7 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
                     }
                   },
                   child: const Text('HourGlass'),
-                ),
+                ), */
               ],
             ),
           ],
