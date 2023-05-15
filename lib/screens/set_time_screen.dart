@@ -1,6 +1,5 @@
 import 'package:chess_family_clock/screens/clock_screen.dart';
 import 'package:chess_family_clock/screens/gong_screen.dart';
-import 'package:chess_family_clock/screens/hour_glass.dart';
 import 'package:chess_family_clock/screens/screen_960.dart';
 import 'package:flutter/material.dart';
 

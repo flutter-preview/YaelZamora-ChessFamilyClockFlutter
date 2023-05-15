@@ -1,5 +1,4 @@
 import 'package:chess_family_clock/screens/clock_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Screen960 extends StatefulWidget {

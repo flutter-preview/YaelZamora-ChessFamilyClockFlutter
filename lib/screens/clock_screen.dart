@@ -38,8 +38,10 @@ class _ClockScreenState extends State<ClockScreen>
 
   late bool whiteRunning = true;
   late bool blackRunning = true;
+  late bool botonPicado = false;
   int jugadasBlancas = 0;
   int jugadasNegras = 0;
+  int boton = 0;
 
   @override
   void dispose() {
@@ -122,13 +124,33 @@ class _ClockScreenState extends State<ClockScreen>
                     ),
                   ),
                   IconButton(
-                    onPressed: () => _controllerBlancas.start(),
-                    icon: const Icon(
-                      Icons.play_arrow,
+                    onPressed: () {
+                      botonPicado = !botonPicado;
+                      if (boton == 1) {
+                        _controllerNegras.start();
+                      } else if (boton == 2) {
+                        _controllerBlancas.start();
+                      }
+
+                      if (!whiteRunning) {
+                        _controllerNegras.pause();
+                        boton = 1;
+                      } else if (!blackRunning) {
+                        _controllerBlancas.pause();
+                        boton = 2;
+                      }
+                    },
+                    icon: Icon(
+                      (botonPicado) ? Icons.pause : Icons.play_arrow,
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _controllerBlancas.reset();
+                      _controllerNegras.reset();
+                      jugadasBlancas = 0;
+                      jugadasNegras = 0;
+                    },
                     icon: const Icon(
                       Icons.refresh,
                     ),
