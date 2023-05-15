@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.chess_family_clock">
+    package="com.technologyfantasy.chess_family_clock">
    <application
-        android:label="chess_family_clock"
-        android:name="${applicationName}"
+        android:label="ChessFamilyClock"
+        android:name="ChessFamilyClock"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
