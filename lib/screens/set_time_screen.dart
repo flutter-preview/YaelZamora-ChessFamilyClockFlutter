@@ -1,6 +1,7 @@
 import 'package:chess_family_clock/screens/clock_screen.dart';
 import 'package:chess_family_clock/screens/gong_screen.dart';
 import 'package:chess_family_clock/screens/screen_960.dart';
+import 'package:chess_family_clock/screens/time_control_screen.dart';
 import 'package:flutter/material.dart';
 
 class SetTimeScreen extends StatefulWidget {
@@ -21,8 +22,8 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
     final tiempo = TextEditingController();
     final suma = TextEditingController();
 
-    int tiempoInicial = 3;
-    int incremento = 2;
+    //int tiempoInicial = 3;
+    //int incremento = 2;
 
     return Scaffold(
       appBar: AppBar(
@@ -58,6 +59,7 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
                     onSaved: (value) {
                       tiempo.text = value!;
                     },
+                    onFieldSubmitted: (value) => tiempo.text = value,
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
@@ -70,9 +72,19 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
                     onSaved: (value) {
                       suma.text = value!;
                     },
+                    onFieldSubmitted: (value) => suma.text = value,
                   ),
                 ],
               ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const TimeControlScreen(),
+                ),
+              ),
+              child: const Text('Control de tiempo'),
             ),
             Container(
               width: size.width,
