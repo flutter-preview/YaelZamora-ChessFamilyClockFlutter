@@ -5,6 +5,14 @@ import 'package:flutter/material.dart';
 class TimeControlScreen extends StatelessWidget {
   const TimeControlScreen({super.key});
 
+  final snackBar1 = const SnackBar(
+    content: Text('Error en el control de tiempo'),
+  );
+
+  final snackBar2 = const SnackBar(
+    content: Text('Error en las jugadas'),
+  );
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -16,6 +24,8 @@ class TimeControlScreen extends StatelessWidget {
     final jugadasUno = TextEditingController();
     final jugadasDos = TextEditingController();
     final jugadasTres = TextEditingController();
+
+    validacion() {}
 
     return Scaffold(
       appBar: AppBar(
@@ -65,12 +75,25 @@ class TimeControlScreen extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             child: MaterialButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const TimeControlClock(),
-                  ),
-                );
+                if (int.parse(jugadasUno.text) > int.parse(jugadasDos.text) ||
+                    int.parse(jugadasUno.text) > int.parse(jugadasTres.text) ||
+                    int.parse(jugadasDos.text) > int.parse(jugadasTres.text)) {
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar1);
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => TimeControlClock(
+                        controlUno: int.parse(primerControl.text),
+                        controlDos: int.parse(segundoControl.text),
+                        controlTres: int.parse(tercerControl.text),
+                        jugadasUno: int.parse(jugadasUno.text),
+                        jugadasDos: int.parse(jugadasDos.text),
+                        jugadasTres: int.parse(jugadasTres.text),
+                      ),
+                    ),
+                  );
+                }
               },
               minWidth: size.width,
               height: 50,

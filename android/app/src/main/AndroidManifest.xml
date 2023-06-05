@@ -4,7 +4,7 @@
     <uses-sdk android:minSdkVersion="21"
         android:targetSdkVersion="30" />
    <application
-        android:label="ChessFamilyClock"
+        android:label="Chess Family Clock"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
         android:allowBackup="false"

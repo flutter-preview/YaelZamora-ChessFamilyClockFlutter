@@ -1,5 +1,6 @@
 import 'package:chess_family_clock/screens/set_time_screen.dart';
 import 'package:custom_timer/custom_timer.dart';
+import 'package:wakelock/wakelock.dart';
 import 'package:flutter/material.dart';
 
 class ClockScreen extends StatefulWidget {
@@ -210,6 +211,7 @@ class _ClockScreenState extends State<ClockScreen>
 
   void _blancasPausa() {
     setState(() {
+      (jugadasBlancas == 1) ? null : Wakelock.enable();
       _controllerNegras.start();
       _controllerBlancas.pause();
       _controllerBlancas.add(Duration(seconds: widget.incremento));
