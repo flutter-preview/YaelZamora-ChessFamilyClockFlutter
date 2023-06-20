@@ -16,6 +16,8 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
     content: Text('Tienes que poner tiempo inicial'),
   );
 
+  final proximamente = const SnackBar(content: Text('Próximamente'));
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -78,12 +80,14 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
               ),
             ),
             TextButton(
-              onPressed: () => Navigator.push(
+              /*onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) => const TimeControlScreen(),
                 ),
-              ),
+              ),*/
+              onPressed: () =>
+                  ScaffoldMessenger.of(context).showSnackBar(proximamente),
               child: const Text('Control de tiempo'),
             ),
             Container(
@@ -127,15 +131,21 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TextButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => GongScreen(
-                        tiempo: int.parse(tiempo.text),
-                        incremento: 0,
-                      ),
-                    ),
-                  ),
+                  onPressed: () {
+                    if (tiempo.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => GongScreen(
+                            tiempo: int.parse(tiempo.text),
+                            incremento: 0,
+                          ),
+                        ),
+                      );
+                    }
+                  },
                   child: const Text('GONG'),
                 ),
                 TextButton(

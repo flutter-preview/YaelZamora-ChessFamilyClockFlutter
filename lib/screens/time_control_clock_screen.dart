@@ -220,6 +220,7 @@ class _TimeControlClockState extends State<TimeControlClock>
 
   void _blancasPausa() {
     setState(() {
+      (jugadasBlancas == 1) ? null : Wakelock.enable();
       _controllerNegras.start();
       _controllerBlancas.pause();
       //_controllerBlancas.add(Duration(seconds: widget.incremento));

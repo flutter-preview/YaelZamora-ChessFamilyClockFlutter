@@ -1,5 +1,6 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:wakelock/wakelock.dart';
 
 class GongScreen extends StatefulWidget {
   const GongScreen({
@@ -22,6 +23,7 @@ class _GongScreenState extends State<GongScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    Wakelock.enable();
 
     return Scaffold(
       body: Column(

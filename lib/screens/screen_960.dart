@@ -17,7 +17,17 @@ class Screen960State extends State<Screen960> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: const Text(
+          '960',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +38,14 @@ class Screen960State extends State<Screen960> {
                   posicion.shuffle();
                 });
               },
-              child: const Text('Cambiar'),
+              child: const Text(
+                'Cambiar',
+                style: TextStyle(
+                  color: Colors.indigo,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             Text('$posicion'),
             TextButton.icon(
@@ -89,8 +106,19 @@ class Screen960State extends State<Screen960> {
                   ),
                 );
               },
-              icon: const Icon(Icons.done),
-              label: const Text('Jugar'),
+              icon: const Icon(
+                Icons.done,
+                color: Colors.indigo,
+                size: 20,
+              ),
+              label: const Text(
+                'Jugar',
+                style: TextStyle(
+                  color: Colors.indigo,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),

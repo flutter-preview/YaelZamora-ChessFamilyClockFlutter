@@ -1,4 +1,3 @@
-import 'package:chess_family_clock/screens/clock_screen.dart';
 import 'package:chess_family_clock/screens/time_control_clock_screen.dart';
 import 'package:flutter/material.dart';
 
