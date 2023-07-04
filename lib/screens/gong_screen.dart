@@ -75,9 +75,12 @@ class _GongScreenState extends State<GongScreen> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _controllerBlancas.pause();
+                    _controllerNegras.pause();
+                  },
                   icon: const Icon(
-                    Icons.play_arrow,
+                    Icons.pause,
                   ),
                 ),
                 IconButton(

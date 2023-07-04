@@ -74,6 +74,10 @@ class _ClockScreenState extends State<ClockScreen>
                   child: CustomTimer(
                     controller: _controllerBlancas,
                     builder: (state, remaining) {
+                      if (state.name == 'finished') {
+                        _controllerBlancas.dispose();
+                        _controllerNegras.dispose();
+                      }
                       return (state.name == 'finished')
                           ? const Icon(
                               Icons.flag_rounded,
@@ -172,6 +176,10 @@ class _ClockScreenState extends State<ClockScreen>
                 child: CustomTimer(
                   controller: _controllerNegras,
                   builder: (state, remaining) {
+                    if (state.name == 'finished') {
+                      _controllerBlancas.dispose();
+                      _controllerNegras.dispose();
+                    }
                     return (state.name == 'finished')
                         ? const Icon(
                             Icons.flag_rounded,

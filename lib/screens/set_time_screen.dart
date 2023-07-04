@@ -80,12 +80,12 @@ class _SetTimeScreenState extends State<SetTimeScreen> {
               ),
             ),
             TextButton(
-              /*onPressed: () => Navigator.push(
+              /* onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) => const TimeControlScreen(),
                 ),
-              ),*/
+              ), */
               onPressed: () =>
                   ScaffoldMessenger.of(context).showSnackBar(proximamente),
               child: const Text('Control de tiempo'),

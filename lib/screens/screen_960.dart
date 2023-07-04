@@ -12,7 +12,7 @@ class Screen960State extends State<Screen960> {
   final tiempo = TextEditingController();
   final suma = TextEditingController();
 
-  List<dynamic> posicion = ['A', 'C', 'C', 'A', 'T', 'D', 'T', 'R'];
+  List<String> posicion = ['A', 'C', 'C', 'A', 'T', 'D', 'T', 'R'];
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,13 @@ class Screen960State extends State<Screen960> {
                 ),
               ),
             ),
-            Text('$posicion'),
+            Text(
+              posicion.toString().replaceAll('[', '').replaceAll(']', ''),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
             TextButton.icon(
               onPressed: () {
                 showDialog(

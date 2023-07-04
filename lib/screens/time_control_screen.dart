@@ -24,8 +24,6 @@ class TimeControlScreen extends StatelessWidget {
     final jugadasDos = TextEditingController();
     final jugadasTres = TextEditingController();
 
-    validacion() {}
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
